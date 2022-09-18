@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Container} from "./App.styled"
 
 export default class App extends Component {
 	state = {
@@ -43,9 +44,9 @@ export default class App extends Component {
 		const total = Object.values(this.state).reduce((total, item) => total + item, 0);
 		const percentage = ((this.state.good / total) * 100).toFixed(2);
 		return (
-			<div>
-			<section>
-				<h2>Please leave feedback</h2>
+			<Container>
+			<section className="title">
+				<h2 className="titleText">Please leave feedback</h2>
 					<button type="button" onClick={() => this.handleClickGood(this.good)}>Good</button>
 					<button type="button" onClick={() => this.handeClickNeutral(this.state.neutral)}>Neutral</button>
 					<button type="button" onClick={() => this.handeClickBad(this.state.bad)}>Bad</button>
@@ -63,7 +64,7 @@ export default class App extends Component {
 					<p>No feadback given</p>
 				</section>
 			</div>
-			</div>)
+			</Container>)
 	}
 }
 
