@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import {Container} from "./App.styled"
+import { Container } from "./styled/App.styled"
+import { DataSection } from "./styled/Statistics.styled";
+import { SectionTitle } from "./styled/App.styled";
+import { Button } from "./styled/App.styled";
+import { TitleText } from "./styled/App.styled";
 
 export default class App extends Component {
 	state = {
@@ -35,36 +39,34 @@ export default class App extends Component {
 	countTotalFeedback = () => {
 		return Object.values(this.state).reduce((total, item) => total + item, 0);
 	}
-
+	
 	countPositiveFeedbackPercentage = () => {
-		return ((this.state.good / this.countTotalFeedback) * 100).toFixed(2);
+		return ((this.state.good / this.total) * 100).toFixed(2);
 	}
 
 	render() {
 		const total = Object.values(this.state).reduce((total, item) => total + item, 0);
-		const percentage = ((this.state.good / total) * 100).toFixed(2);
+		console.log(total);
+		const positivFeedbeck = ((this.state.good / total) * 100).toFixed(2);
+		console.log(positivFeedbeck);
 		return (
 			<Container>
-			<section className="title">
-				<h2 className="titleText">Please leave feedback</h2>
-					<button type="button" onClick={() => this.handleClickGood(this.good)}>Good</button>
-					<button type="button" onClick={() => this.handeClickNeutral(this.state.neutral)}>Neutral</button>
-					<button type="button" onClick={() => this.handeClickBad(this.state.bad)}>Bad</button>
-			</section>
-			<div>
-			</div>
-			<div>
-				<h2>Statistics</h2>
-				<section>
-					<p>Good: {this.state.good}</p>
-					<p>Neutral: {this.state.neutral}</p>
-					<p>Bad: {this.state.bad}</p>
-					<p>Total: {total}</p>
-					<p>Positive feedback: {percentage} %</p>
-					<p>No feadback given</p>
-				</section>
-			</div>
+				<SectionTitle>
+					<TitleText>Please leave feedback</TitleText>
+					<section>
+			<Button type="button" onClick={(good) => this.handleClickGood(good)}> Good </Button>
+			<Button type="button" onClick={(neutral) => this.handeClickNeutral(neutral)}>Neutral</Button>
+			<Button type="button" onClick={(bad) => this.handeClickBad(bad)}>Bad</Button>
+		</section>
+				</SectionTitle>
+				{!total ? <p>{"There is no feedback!"}</p> : <DataSection>
+							<h2>Statistics</h2>
+							<p>Good: {this.state.good}</p>
+							<p>Neutral: {this.state.neutral}</p>
+							<p>Bad: {this.state.bad}</p>
+							<p>Total: {total}</p>
+							<p>Positive feedback: {positivFeedbeck} %</p>
+						</DataSection>}
 			</Container>)
 	}
 }
-
