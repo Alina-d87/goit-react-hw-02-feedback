@@ -1,18 +1,20 @@
-//import { ButtonTitle } from "./ButtonInterface";
-//import { DataSection } from "./style.jsx/Statistics.styled";
+import Section from "./Section";
+import { DataSection } from "../App.styled";
 
-//export const Statictics = (state, countTotalFeedback, countPositiveFeedbackPercentage) => {
-//	return (
-//			<DataSection>
-//				<h2>Statistics</h2>
-//				<p>Good: {this.state.good}</p>
-//				<p>Neutral: {this.state.neutral}</p>
-//				<p>Bad: {this.state.bad}</p>
-//			<p>Total: {countTotalFeedback}</p>
-//			<p>Positive feedback: {countPositiveFeedbackPercentage} %</p>
-//			</DataSection>)
-//}
+const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
+	return (
+			<DataSection>
+				<Section title="Statistics">
+				<p>Good: {good}</p>
+				<p>Neutral: {neutral}</p>
+				<p>Bad: {bad}</p>
+			<p>Total: {total}</p>
+				<p>Positive feedback: {positivePercentage} %</p>
+				</Section>
+			</DataSection>)
+}
 
+export default Statistics;
 	
 
 
