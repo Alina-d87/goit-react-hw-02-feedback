@@ -1,10 +1,10 @@
-import { Notify } from "../App.styled";
+import { Notify, NotifyPosition } from "./Message.styled";
 
 const Notification = ({message}) => {
 	return (
-		<div>
+		<NotifyPosition>
 			<Notify>{message}</Notify>  
-		</div>
+		</NotifyPosition>
 	)
 }
 

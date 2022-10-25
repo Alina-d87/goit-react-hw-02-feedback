@@ -1,9 +1,9 @@
-import { TitleText } from "../App.styled";
+import { TitleText } from "./Section.styled";
 
 const Section = ({ title, children }) => {
 	return (
 		<div>
-		<TitleText>{title}</TitleText>
+			<TitleText>{title}</TitleText>
 			{children}
 		</div>
 	)
